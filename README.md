@@ -1,1 +1,1 @@
-# freedom-project-website
+# This is my Freedom Project Website about Machine Learning. Here you will find all you need to know about the basics of Machine Learning and I will demonstrate how it can be used.

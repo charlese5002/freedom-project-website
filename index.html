@@ -9,6 +9,13 @@
   <meta name="keywords" content="global, template, html, sass, jquery">
   <meta name="author" content="Bucky Maler">
   <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js" type="text/javascript"></script>
+<script defer src="face-api.min.js"></script>
+  <script defer src="sketch.js"></script>
+
 </head>
 <body>
 
@@ -40,11 +47,35 @@
             <li><span>About</span></li>
             <li><span>Companies</span></li>
             <li><span>Demo</span></li>
-            <!--<li><span>Contact</span></li>-->
+            <li><span>Contact</span></li>
           </ul>
         </nav>
         <ul class="l-main-content main-content">
+          <!-------------------------------------------->
           <li class="l-section section section--is-active">
+            <div class="intro">
+              <div class="intro--banner">
+                <h1>What is<br><br>Machine<br>Learning?</h1>
+                <img src="https://i.ya-webdesign.com/images/technology-lines-png-1.png" alt="Brain">
+              </div>
+              <div class="intro--options">
+                <a href="#0">
+                  <h3>Machine Learning</h3>
+                  <p>Machine learning is the ability of computers to learn new things autonomously. The learning process is based on data, past experience, and observations. The more data the computer processes, the better it becomes in the conclusions it makes. And this is exactly why machine learning algorithms have become an integral part of many companies and facilities.</p>
+                </a>
+                <a href="#0">
+                  <h3>The Future</h3>
+                  <p>Machine Learning has been a semi-recent implementation but it has been studied and worked on for a while now and its uses are still being discovered. However, the end goal is very clear: to create a fully autonomously thinking machine. Even though this is a hard to reach idea, people are effortlessly attempting to create this. This is the future of machine learning, a self-thinking artificial intelligence machine.</p>
+                </a>
+                <a href="#0">
+                  <h3>Applications</h3>
+                  <p>There is an infinite amount of ways that you could use Machine Learning. There are 3 main algorithms used and they are each equally useful. They can be applied to different applications and services to help with efficiency and organization.</p>
+                </a>
+              </div>
+            </div>
+          </li>
+          <!------------------------------------------->
+          <li class="l-section section">
             <div class="intro">
               <div class="intro--banner">
                 <h1>Different<br>Types of<br>Machine<br>Learning</h1>
@@ -66,7 +97,7 @@
               </div>
             </div>
           </li>
-          ----------------------------------------
+          <!-------------------------------------------->
           <li class="l-section section">
             <div class="work">
               <h2>Companies Who Use Machine Learning</h2>
@@ -120,137 +151,82 @@
               </div>
             </div>
           </li>
-          ----------------------------------
+          <!-------------------------------------->
           <li class="l-section section">
-            <div class="about">
-              <div class="about--banner">
-                <h2>We<br>believe in<br>passionate<br>people</h2>
-                <a href="#0">Career
-                  <span>
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
-                    <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">
-                      <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
-                    </g>
-                    </svg>
-                  </span>
-                </a>
-                <img src="assets/img/about-visual.png" alt="About Us">
-              </div>
-              <div class="about--options">
+            <div class="intro">
+              <!--<div class="intro--banner">-->
+              <!--  <h1>Different<br>Types of<br>Machine<br>Learning</h1>-->
+              <!--  <img src="https://i.ya-webdesign.com/images/learning-vector-artificial-intelligence-3.png" alt="Welcome">-->
+              <!--</div>-->
+              <!--<h1>Object Detection Demo</h1>-->
+              <!--<p id="status">Loading...</p>-->
+              <!--<button type="button" class="btn btn-dark" onclick="show()">Show</button>-->
+              <!--<button type="button" class="btn btn-dark" onclick="hide()">Hide</button>-->
+              <!--<script src="sketch.js"></script>-->
+              <!--<video id="video" width="720" height="560" autoplay muted></video>-->
+<!--              <div id="info" class="text-center">-->
+<!--  OpenCV.js is loading...-->
+<!--</div>-->
+<!--<div id="container">-->
+<!--  <canvas class="center-block" id="canvasOutput" width=320 height=240></canvas>-->
+<!--</div>-->
+<!--<div class="invisible">-->
+<!--  <input type="checkbox" id="face" name="classifier" value="face" checked>-->
+<!--  <label for="face">face</label>-->
+<!--  <input type="checkbox" id="eye" name="cascade" value="eye">-->
+<!--  <label for="eye">eye</label>-->
+<!--</div>-->
+<!--<div class="invisible">-->
+<!--  <video id="video" class="hidden">Your browser does not support the video tag.</video>-->
+<!--</div>-->
+<!--<script src="/libs/adapter-latest.js"></script>-->
+<!--<script src="/libs/stats.min.js"></script>-->
+<!--<script src="/libs/dat.gui.min.js"></script>-->
+<!--<script src="/libs/utils.js"></script>-->
+<!--<script>-->
+<!--var featuresReady = checkFeatures(document.getElementById("info"), {webrtc: true});-->
+<!--</script>-->
+<!--<script src="js/index.js"></script>-->
+<!--<script>-->
+<!--var Module = {-->
+<!--  preRun: [function() {-->
+<!--    Module.FS_createPreloadedFile('/', 'haarcascade_eye.xml', '../data/haarcascade_eye.xml', true, false);-->
+<!--    Module.FS_createPreloadedFile('/', 'haarcascade_frontalface_default.xml', '../data/haarcascade_frontalface_default.xml', true, false);-->
+<!--    Module.FS_createPreloadedFile('/', 'haarcascade_profileface.xml', '../data/haarcascade_profileface.xml', true, false);-->
+<!--  }],-->
+<!--  _main: function() {opencvIsReady();}-->
+<!--};-->
+<!--</script>-->
+<!--<script async src="/opencv.js"></script>-->
+              <iframe allow="camera;microphone" src="https://huningxin.github.io/opencv.js/samples/face-detection/index.html"></iframe>
+              <div class="intro--options">
                 <a href="#0">
-                  <h3>Winners</h3>
+                  <h3>What is it?</h3>
+                  <p>This is a demo that uses javascript based program that automatically filters through a database and detects images through your camera that it recognizes.</p>
                 </a>
                 <a href="#0">
-                  <h3>Philosophy</h3>
+                  <h3>Purpose</h3>
+                  <p>The idea behind implementing this program was to demostrate one of the many ways Machine Learning is used.</p>
                 </a>
                 <a href="#0">
-                  <h3>History</h3>
+                  <h3>How it Works</h3>
+                  <p>Simply put your face in front of the camera and a red box should go around it. You can put multiple objects in front of the camera at one time and it will detect them all.</p>
                 </a>
               </div>
             </div>
           </li>
-          ----------------------------------
+          <!-------------------------------------------->
           <li class="l-section section">
             <div class="contact">
               <div class="contact--lockup">
                 <div class="modal">
                   <div class="modal--information">
-                    <p>Pawia 5, 31-154 Kraków, Poland</p>
-                    <a href="mailto:ouremail@gmail.com">ouremail@gmail.com</a>
-                    <a href="tel:+148126287560">+48 12 628 75 60</a>
+                    <h3>Contact</h3>
+                    <p>350 67th St, Brooklyn, NY 11220</p>
+                    <a href="mailto:charlese5002@hstat.org">charlese5002@hstat.org</a>
                   </div>
-                  <ul class="modal--options">
-                    <li><a href="#0">Bēhance</a></li>
-                    <li><a href="#0">dribbble</a></li>
-                    <li><a href="mailto:ouremail@gmail.com">Contact Us</a></li>
-                  </ul>
                 </div>
               </div>
-            </div>
-          </li>
-          <li class="l-section section">
-            <div class="hire">
-              <h2>You want us to do</h2>
-              <!-- checkout formspree.io for easy form setup -->
-              <form class="work-request">
-                <div class="work-request--options">
-                  <span class="options-a">
-                    <input id="opt-1" type="checkbox" value="app design">
-                    <label for="opt-1">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      App Design
-                    </label>
-                    <input id="opt-2" type="checkbox" value="graphic design">
-                    <label for="opt-2">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      Graphic Design
-                    </label>
-                    <input id="opt-3" type="checkbox" value="motion design">
-                    <label for="opt-3">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      Motion Design
-                    </label>
-                  </span>
-                  <span class="options-b">
-                    <input id="opt-4" type="checkbox" value="ux design">
-                    <label for="opt-4">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      UX Design
-                    </label>
-                    <input id="opt-5" type="checkbox" value="webdesign">
-                    <label for="opt-5">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      Webdesign
-                    </label>
-                    <input id="opt-6" type="checkbox" value="marketing">
-                    <label for="opt-6">
-                      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                      viewBox="0 0 150 111" style="enable-background:new 0 0 150 111;" xml:space="preserve">
-                      <g transform="translate(0.000000,111.000000) scale(0.100000,-0.100000)">
-                        <path d="M950,705L555,310L360,505C253,612,160,700,155,700c-6,0-44-34-85-75l-75-75l278-278L550-5l475,475c261,261,475,480,475,485c0,13-132,145-145,145C1349,1100,1167,922,950,705z"/>
-                      </g>
-                      </svg>
-                      Marketing
-                    </label>
-                  </span>
-                </div>
-                <div class="work-request--information">
-                  <div class="information-name">
-                    <input id="name" type="text" spellcheck="false">
-                    <label for="name">Name</label>
-                  </div>
-                  <div class="information-email">
-                    <input id="email" type="email" spellcheck="false">
-                    <label for="email">Email</label>
-                  </div>
-                </div>
-                <input type="submit" value="Send Request">
-              </form>
             </div>
           </li>
         </ul>
@@ -259,10 +235,10 @@
   </div>
   <ul class="outer-nav">
     <li class="is-active">Home</li>
-    <li>Works</li>
     <li>About</li>
+    <li>Companies</li>
+    <li>Demo</li>
     <li>Contact</li>
-    <li>Hire us</li>
   </ul>
 </div>
 
